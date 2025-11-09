@@ -22,8 +22,8 @@ const options = {
                 description: 'Servidor de desarrollo local'
             },
             {
-                url: 'https://api-alquiler-autos.herokuapp.com',
-                description: 'Servidor de producción'
+                url: 'https://deployefiback-production.up.railway.app',
+                description: 'Servidor de producción (Railway)'
             }
         ],
         components: {
