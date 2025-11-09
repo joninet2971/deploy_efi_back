@@ -20,7 +20,7 @@ try {
   }
 }
 
-// Iniciar el servidor
+// Ianiciar el servidor
 console.log('Iniciando servidor...');
 require('./index.js');
 
