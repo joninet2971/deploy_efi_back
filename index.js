@@ -4,8 +4,9 @@ const cors = require('cors');
 const app = express();
 const swaggerUI = require("swagger-ui-express");
 const specs = require("./swagger/swagger.js");
+const db = require('./models');
 
-const port = process.env.PORT || 3000;;
+const port = process.env.PORT || 3000;
 
 app.use(cors());
 app.use(express.json());
@@ -29,6 +30,15 @@ app.get('/', (req, res) => {
   res.send('Servidor funcionando!');
 });
 
-app.listen(port, () => {
-  console.log(`Servidor corriendo en localhost:${port}`);
-});
+// Inicializar conexión a la base de datos y luego iniciar el servidor
+db.sequelize.authenticate()
+  .then(() => {
+    console.log('Conexión a la base de datos establecida correctamente.');
+    app.listen(port, () => {
+      console.log(`Servidor corriendo en el puerto ${port}`);
+    });
+  })
+  .catch(err => {
+    console.error('No se pudo conectar a la base de datos:', err);
+    process.exit(1);
+  });
