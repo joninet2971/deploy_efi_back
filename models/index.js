@@ -6,8 +6,52 @@ const Sequelize = require('sequelize');
 const process = require('process');
 const basename = path.basename(__filename);
 const env = process.env.NODE_ENV || 'development';
-const config = require(__dirname + '/../config/config.json')[env];
+let config = require(__dirname + '/../config/config.json')[env];
 const db = {};
+
+// En producción, sobrescribir con variables de entorno de Railway si están disponibles
+if (env === 'production') {
+  // Intentar usar MYSQL_PUBLIC_URL primero (URL completa de Railway)
+  if (process.env.MYSQL_PUBLIC_URL && process.env.MYSQL_PUBLIC_URL.includes('/')) {
+    config = {
+      use_env_variable: 'MYSQL_PUBLIC_URL',
+      dialect: 'mysql',
+      dialectOptions: {
+        ssl: {
+          rejectUnauthorized: false
+        }
+      }
+    };
+  } 
+  // Si MYSQL_URL está completa, usarla
+  else if (process.env.MYSQL_URL && process.env.MYSQL_URL.includes('/')) {
+    config = {
+      use_env_variable: 'MYSQL_URL',
+      dialect: 'mysql',
+      dialectOptions: {
+        ssl: {
+          rejectUnauthorized: false
+        }
+      }
+    };
+  } 
+  // Fallback a variables individuales de Railway
+  else {
+    config = {
+      username: process.env.MYSQLUSER || config.username,
+      password: process.env.MYSQLPASSWORD || config.password,
+      database: process.env.MYSQLDATABASE || config.database,
+      host: process.env.MYSQLHOST || config.host,
+      port: process.env.MYSQLPORT || config.port || 3306,
+      dialect: 'mysql',
+      dialectOptions: {
+        ssl: {
+          rejectUnauthorized: false
+        }
+      }
+    };
+  }
+}
 
 let sequelize;
 if (config.use_env_variable) {
