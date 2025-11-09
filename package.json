@@ -5,20 +5,13 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-<<<<<<< HEAD
     "dev": "nodemon index.js",
     "start": "node start.js",
     "migrate": "sequelize-cli db:migrate",
     "migrate:undo": "sequelize-cli db:migrate:undo",
     "migrate:undo:all": "sequelize-cli db:migrate:undo:all",
-    "seed": "sequelize-cli db:seed:all"
-=======
-    "start": "node index.js",
-    "dev": "nodemon index.js",
-    "migrate": "npx sequelize-cli db:migrate --env production && npx sequelize-cli db:seed:all --env production",
-    "release": "npm run migrate",
-    "check-db": "node scripts/check_db.js"
->>>>>>> 7fa6c67acf7cd177b695ec43868aa056f0a01c56
+    "seed": "sequelize-cli db:seed:all",
+    "release": "npm run migrate"
   },
   "keywords": [],
   "author": "",
@@ -32,21 +25,11 @@
     "mysql2": "^3.15.0",
     "nodemailer": "^7.0.10",
     "sequelize": "^6.37.7",
-<<<<<<< HEAD
-    "swagger-jsdoc": "^6.2.8",
-    "swagger-ui-express": "^5.0.1",
-    "sequelize-cli": "^6.6.3"
-=======
     "sequelize-cli": "^6.6.3",
     "swagger-jsdoc": "^6.2.8",
     "swagger-ui-express": "^5.0.1"
->>>>>>> 7fa6c67acf7cd177b695ec43868aa056f0a01c56
   },
   "devDependencies": {
     "nodemon": "^3.1.10"
   }
-<<<<<<< HEAD
-=======
-  
->>>>>>> 7fa6c67acf7cd177b695ec43868aa056f0a01c56
 }
