@@ -14,15 +14,14 @@ module.exports = {
     dialect: "mysql"
   },
   production: {
-    username: process.env.MYSQLUSER || "root",
-    password: process.env.MYSQLPASSWORD || "HAavyCqkbbtSyJCsYcazBtLjoNcpHEL0",
-    database: process.env.MYSQLDATABASE || "railway",
-    host: process.env.MYSQLHOST || "mysql.railway.internal",
-    port: process.env.MYSQLPORT || 3306,
+    username: "root",
+    password: "HAavyCqkbbtSyJCsYcazBtLjoNcpHEL0",
+    database: "railway",
+    host: "caboose.proxy.rlwy.net",
+    port: 51930,
     dialect: "mysql",
     dialectOptions: {
-      connectTimeout: 60000,
-      ssl: false
+      connectTimeout: 60000
     }
   }
 };
