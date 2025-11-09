@@ -1,9 +1,17 @@
 const path = require('path');
 
 module.exports = {
+<<<<<<< HEAD
   'config': path.resolve('config', 'config.json'),
   'models-path': path.resolve('models'),
   'seeders-path': path.resolve('seeders'),
   'migrations-path': path.resolve('migrations')
 };
 
+=======
+  'config': path.resolve('config', 'database.js'),
+  'models-path': path.resolve('models'),
+  'seeders-path': path.resolve('seeders'),
+  'migrations-path': path.resolve('migrations')
+};
+>>>>>>> 7fa6c67acf7cd177b695ec43868aa056f0a01c56
